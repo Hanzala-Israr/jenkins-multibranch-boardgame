@@ -51,7 +51,7 @@ ${pipelineStatus.toUpperCase()}</h3>
             """ 
  
             emailext ( 
-                subject: "${jobName} - Build ${buildNumber} - 
+                subject: "${jobName} - 
 ${pipelineStatus.toUpperCase()}", 
                 body: body, 
                 to: 'hanzala.coder@gmail.com', 
