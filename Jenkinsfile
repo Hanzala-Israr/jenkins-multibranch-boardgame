@@ -1,39 +1,14 @@
-pipeline {    
-    agent any 
-    tools {
-        jdk 'jdk17'
-        maven 'maven3'
-    }
-
-    stages {   
-        stage('Compile') {
-            steps {
-                sh 'mvn compile'
-            }
-        }
-        
-        stage('Test') {
-            steps {
-                sh 'mvn test'
-            }
-        }
-        
-        stage('Build') {
-            steps {
-                sh 'mvn package'
-            }
-        }
-    }
-    pipeline { 
+ pipeline { 
 agent any 
 tools { 
 maven 'maven3' 
+  jdk 'jdk17'
 } 
 stages { 
         stage('Git') { 
             steps { 
-                git branch: 'develop', url: 
-'https://github.com/jaiswaladi2468/BoardgameListingWebApp.git' 
+                git branch: 'main', url: 
+'https://github.com/Hanzala-Israr/jenkins-multibranch-boardgame.git' 
             } 
         } 
          
@@ -83,5 +58,4 @@ ${pipelineStatus.toUpperCase()}",
         } 
     } 
 } 
-}
 }
