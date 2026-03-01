@@ -1,25 +1,30 @@
- pipeline { 
-agent any 
-tools { 
-maven 'maven3' 
-  jdk 'jdk17'
-} 
-stages { 
-        stage('Git') { 
-            steps { 
-                git branch: 'main', url: 
-'https://github.com/Hanzala-Israr/jenkins-multibranch-boardgame.git' 
-            } 
-        } 
-         
-        stage('Build') { 
-            steps { 
-                sh "mvn package" 
-            } 
-        } 
-    } 
-     
-    post { 
+pipeline {    
+    agent any 
+    tools {
+        jdk 'jdk17'
+        maven 'maven3'
+    }
+
+    stages {   
+        stage('Compile') {
+            steps {
+                sh 'mvn compile'
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                sh 'mvn package'
+            }
+        }
+    }
+  post { 
     always { 
         script { 
             def jobName = env.JOB_NAME 
@@ -51,7 +56,7 @@ ${pipelineStatus.toUpperCase()}",
                 body: body, 
                 to: 'hanzala.coder@gmail.com', 
                 from: 'jenkins@hanzala.com', 
-                replyTo: 'jenkins@hanzala.com', 
+                replyTo: 'jenkins@hanzala.com',  
                 mimeType: 'text/html', 
                 
             ) 
