@@ -1,4 +1,4 @@
-# 🎲 Boardgame Listing Web Application with Jenkins CI/CD
+#  Boardgame Listing Web Application with Jenkins CI/CD
 
 ## 📌 Project Overview
 
@@ -73,7 +73,7 @@ Authentication and authorization are implemented using **Spring Security**.
 
 ---
 
-# 🏗️ Application Architecture
+#  Application Architecture
 
 The project follows **Spring MVC architecture** with clear separation of concerns:
 
@@ -117,17 +117,29 @@ This project uses **Jenkins Multibranch Pipeline** to automate the build and tes
 ## Pipeline Workflow
 
 Developer pushes code to GitHub
-        ↓
+        
+↓
+        
 GitHub Webhook triggers Jenkins
-        ↓
+        
+↓
+        
 Jenkins detects branch
-        ↓
+        
+↓
+        
 Jenkins Multibranch Pipeline runs
-        ↓
+        
+↓
+        
 Maven builds the project
-        ↓
+        
+↓
+        
 JUnit tests are executed
-        ↓
+        
+↓
+        
 Build status and notifications are generated
 
 ---
@@ -186,31 +198,6 @@ Common notification channels:
 - Email
 - Slack
 - Jenkins dashboard alerts
-
----
-
-# 📂 Project Structure
-
-BoardgameListingWebApp
-│
-├── src
-│   ├── main
-│   │   ├── java
-│   │   │   ├── controllers
-│   │   │   ├── services
-│   │   │   ├── repositories
-│   │   │   └── models
-│   │   │
-│   │   ├── resources
-│   │   │   ├── templates
-│   │   │   ├── static
-│   │   │   └── schema.sql
-│
-├── test
-│   └── JUnit tests
-│
-├── pom.xml
-└── README.md
 
 ---
 
@@ -281,20 +268,7 @@ mvn test
 
 ---
 
-# 📈 Future Improvements
-
-Possible enhancements:
-
-- Docker containerization
-- Kubernetes deployment
-- CI/CD with GitHub Actions
-- PostgreSQL database integration
-- REST API version
-
----
 
 # 👨‍💻 Author
 
 **Hanzala Israr**  
-BS Computer Science  
-Roll No: **24-CS-10**
