@@ -1,53 +1,274 @@
-# BoardgameListingWebApp
+#  Boardgame Listing Web Application with Jenkins CI/CD
 
-## Description
+## 📌 Project Overview
 
-**Board Game Database Full-Stack Web Application.**
-This web application displays lists of board games and their reviews. While anyone can view the board game lists and reviews, they are required to log in to add/ edit the board games and their reviews. The 'users' have the authority to add board games to the list and add reviews, and the 'managers' have the authority to edit/ delete the reviews on top of the authorities of users.  
+**Boardgame Listing Web App** is a **full-stack web application** that allows users to explore board games and read reviews. The application implements **role-based authentication and authorization**, enabling different users to interact with the system based on their permissions.
 
-## Technologies
+The project also demonstrates a **DevOps CI/CD pipeline** using **Jenkins Multibranch Pipeline**, **GitHub Webhooks**, and **automated build/testing workflows**.
+
+The main goal of this project is to combine **full-stack development with modern DevOps practices**.
+
+---
+
+# 🚀 Key Features
+
+### 🎮 Application Features
+
+- View a list of board games and reviews
+- Add new board games
+- Write reviews for board games
+- Edit and delete reviews (manager role only)
+- Secure login and authentication
+- Role-based access control
+- Clean UI using Thymeleaf templates and Bootstrap
+
+---
+
+### 🔐 Role-Based Access
+
+| Role | Permissions |
+|-----|-------------|
+| **Non-Member** | View board games and reviews |
+| **User** | Add board games and write reviews |
+| **Manager** | Edit and delete reviews |
+
+Authentication and authorization are implemented using **Spring Security**.
+
+---
+
+# 🛠️ Technologies Used
+
+## Backend
 
 - Java
 - Spring Boot
-- Amazon Web Services(AWS) EC2
+- Spring MVC
+- Spring Security
+- JDBC
+
+## Frontend
+
 - Thymeleaf
 - Thymeleaf Fragments
 - HTML5
 - CSS
 - JavaScript
-- Spring MVC
-- JDBC
-- H2 Database Engine (In-memory)
-- JUnit test framework
-- Spring Security
 - Twitter Bootstrap
+
+## Database
+
+- H2 Database Engine (In-memory)
+
+## Testing
+
+- JUnit
+
+## DevOps & Deployment
+
+- Jenkins
+- Jenkins Multibranch Pipeline
+- GitHub Webhooks
 - Maven
+- AWS EC2
 
-## Features
+---
 
-- Full-Stack Application
-- UI components created with Thymeleaf and styled with Twitter Bootstrap
-- Authentication and authorization using Spring Security
-  - Authentication by allowing the users to authenticate with a username and password
-  - Authorization by granting different permissions based on the roles (non-members, users, and managers)
-- Different roles (non-members, users, and managers) with varying levels of permissions
-  - Non-members only can see the boardgame lists and reviews
-  - Users can add board games and write reviews
-  - Managers can edit and delete the reviews
-- Deployed the application on AWS EC2
-- JUnit test framework for unit testing
-- Spring MVC best practices to segregate views, controllers, and database packages
-- JDBC for database connectivity and interaction
-- CRUD (Create, Read, Update, Delete) operations for managing data in the database
-- Schema.sql file to customize the schema and input initial data
-- Thymeleaf Fragments to reduce redundancy of repeating HTML elements (head, footer, navigation)
+#  Application Architecture
 
-## How to Run
+The project follows **Spring MVC architecture** with clear separation of concerns:
 
-1. Clone the repository
-2. Open the project in your IDE of choice
-3. Run the application
-4. To use initial user data, use the following credentials.
-  - username: bugs    |     password: bunny (user role)
-  - username: daffy   |     password: duck  (manager role)
-5. You can also sign-up as a new user and customize your role to play with the application! 😊
+Controller Layer
+        ↓
+Service Layer
+        ↓
+Repository / JDBC Layer
+        ↓
+H2 Database
+
+### Main Components
+
+- **Controllers** – Handle HTTP requests
+- **Services** – Business logic
+- **Repositories** – Database operations
+- **Views** – Thymeleaf templates
+
+---
+
+# ☁️ Deployment
+
+The application is deployed on:
+
+**Amazon Web Services (AWS) EC2**
+
+Steps performed:
+
+1. Launch EC2 instance
+2. Install Java and Maven
+3. Clone project repository
+4. Build the project
+5. Run Spring Boot application
+
+---
+
+# ⚙️ CI/CD Pipeline with Jenkins
+
+This project uses **Jenkins Multibranch Pipeline** to automate the build and testing process.
+
+## Pipeline Workflow
+
+Developer pushes code to GitHub
+        
+↓
+        
+GitHub Webhook triggers Jenkins
+        
+↓
+        
+Jenkins detects branch
+        
+↓
+        
+Jenkins Multibranch Pipeline runs
+        
+↓
+        
+Maven builds the project
+        
+↓
+        
+JUnit tests are executed
+        
+↓
+        
+Build status and notifications are generated
+
+---
+
+# 🌿 Jenkins Multibranch Pipeline
+
+A **Multibranch Pipeline** automatically creates pipelines for each branch in the repository.
+
+### Benefits
+
+- Automatic branch discovery
+- Parallel development workflows
+- Independent builds for each branch
+- Automatic pipeline execution
+
+Example branches:
+
+main
+develop
+feature/login
+feature/reviews
+
+Each branch triggers its own pipeline build.
+
+---
+
+# 🔔 GitHub Webhooks Integration
+
+**GitHub Webhooks** are configured to notify Jenkins whenever code changes occur.
+
+### Workflow
+
+1️⃣ Developer pushes code to GitHub  
+2️⃣ GitHub sends webhook event to Jenkins  
+3️⃣ Jenkins triggers pipeline automatically  
+4️⃣ Jenkins runs build and tests
+
+Webhook events include:
+
+- push
+- pull request updates
+- branch creation
+
+---
+
+# 📢 Jenkins Notifications
+
+Notifications can be configured to inform the team about:
+
+- Build success
+- Build failure
+- Pipeline execution results
+
+Common notification channels:
+
+- Email
+- Slack
+- Jenkins dashboard alerts
+
+---
+
+# ▶️ How to Run the Project
+
+### 1️⃣ Clone the repository
+
+git clone https://github.com/your-username/boardgame-jenkins-pipeline.git
+
+---
+
+### 2️⃣ Navigate to project directory
+
+cd boardgame-jenkins-pipeline
+
+---
+
+### 3️⃣ Build the project
+
+mvn clean install
+
+---
+
+### 4️⃣ Run the application
+
+mvn spring-boot:run
+
+---
+
+### 5️⃣ Access the application
+
+Open browser:
+
+http://localhost:8080
+
+---
+
+# 👤 Default User Credentials
+
+Initial users included in the database:
+
+| Username | Password | Role |
+|--------|--------|------|
+| bugs | bunny | User |
+| daffy | duck | Manager |
+
+You can also register new users.
+
+---
+
+# 🧪 Testing
+
+Unit tests are written using **JUnit**.
+
+Run tests using:
+
+mvn test
+
+---
+
+# 📊 CI/CD Benefits in This Project
+
+- Automated builds
+- Automated testing
+- Faster development cycle
+- Reduced manual deployment errors
+- Continuous integration of code changes
+
+---
+
+
+# 👨‍💻 Author
+
+**Hanzala Israr**  
